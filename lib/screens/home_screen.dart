@@ -1,6 +1,7 @@
 // lib/screens/home_screen.dart
 
 import 'package:flutter/material.dart';
+import 'package:online_shop/screens/product_detail_screen.dart';
 import '../models/product_model.dart';
 import '../services/api_service.dart';
 
@@ -44,7 +45,6 @@ class _HomeScreenState extends State<HomeScreen> {
           else if (snapshot.hasError) {
             return Center(child: Text('Error: ${snapshot.error}'));
           }
-          // Si tenemos datos, los mostramos en una lista
           else if (snapshot.hasData) {
             final products = snapshot.data!;
             return ListView.builder(
@@ -63,14 +63,19 @@ class _HomeScreenState extends State<HomeScreen> {
                     title: Text(product.title),
                     subtitle: Text('\$${product.price.toStringAsFixed(2)}'),
                     onTap: () {
-                      // TODO: Navegar a la pantalla de detalle del producto
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ProductDetailScreen(product: product),
+                        ),
+                      );
                     },
                   ),
                 );
               },
             );
           }
-          // Si no hay datos por alguna otra razón
+
           else {
             return const Center(child: Text('No se encontraron productos.'));
           }
