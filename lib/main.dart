@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 // Importaremos nuestras pantallas aquí
+import 'package:online_shop/providers/cart_provider.dart';
 import 'package:online_shop/screens/login_screen.dart';
 import 'package:online_shop/screens/home_screen.dart';
 import 'package:online_shop/screens/cart_screen.dart';
-import 'package:online_shop/screens/product_detail_screen.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => CartProvider(),
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -16,7 +22,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Mi Tienda Online',
+      title: 'La mejor tienda del mundo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
