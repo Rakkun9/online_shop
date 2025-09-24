@@ -22,13 +22,11 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      // Definimos las rutas de nuestra aplicación
-      initialRoute: '/login', // La primera pantalla que se mostrará
+      initialRoute: '/login',
       routes: {
         '/login': (context) => const LoginScreen(),
         '/home': (context) => const HomeScreen(),
         '/cart': (context) => const CartScreen(),
-        // La ruta de detalle del producto la manejaremos de otra forma luego
       },
     );
   }
